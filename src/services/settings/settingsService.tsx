@@ -61,22 +61,25 @@ function handleStatusBar({
     true,
   );
 
-  if (translucent) {
-    StatusBar.setTranslucent(translucent);
-  }
-
   if (Platform.OS === 'android') {
-    if (backgroundColor) {
-      StatusBar.setBackgroundColor(backgroundColor);
 
-      return;
+    if (translucent) {
+      StatusBar.setTranslucent(translucent);
     }
 
-    StatusBar.setBackgroundColor(
-      appColor === 'dark'
-        ? colors.darkTheme.background
-        : colors.lightTheme.background,
-    );
+    if (Platform.OS === 'android') {
+      if (backgroundColor) {
+        StatusBar.setBackgroundColor(backgroundColor);
+
+        return;
+      }
+
+      StatusBar.setBackgroundColor(
+        appColor === 'dark'
+          ? colors.darkTheme.background
+          : colors.lightTheme.background,
+      );
+    }
   }
 }
 
